@@ -1,0 +1,28 @@
+{
+  "name": "wab3",
+  "version": "1.0.0",
+  "description": "Web Application Builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndreyGermanov/wab3.git"
+  },
+  "author": "Andrey Germanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreyGermanov/wab3/issues"
+  },
+  "homepage": "https://github.com/AndreyGermanov/wab3",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "waterline": "^0.12.1"
+  }
+}

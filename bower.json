@@ -1,0 +1,24 @@
+{
+  "name": "wab3",
+  "description": "Web Application Builder",
+  "main": "index.js",
+  "authors": [
+    "Andrey Germanov"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/AndreyGermanov/wab3",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.0.1",
+    "jquery": "^2.2.3"
+  }
+}
