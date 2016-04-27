@@ -1,5 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
+var nodeExternals = require('webpack-node-externals');
+
 module.exports = {
     resolve: {
         modulesDirectories: ["web_modules", "node_modules", "bower_components"]
@@ -20,5 +22,7 @@ module.exports = {
     output: {
         path: __dirname+'/public/js',
         filename: 'app.js'
-    }
+    },
+    target: 'node',
+    externals: [nodeExternals()]
 }

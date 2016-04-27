@@ -19,10 +19,12 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-node-externals": "^1.2.0"
   },
   "dependencies": {
     "express": "^4.13.4",
+    "socket.io": "^1.4.5",
     "waterline": "^0.12.1"
   }
 }
