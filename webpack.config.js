@@ -10,11 +10,10 @@ module.exports = {
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
         ),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-        }
-})
+//        new webpack.optimize.UglifyJsPlugin({
+//            compress: {
+//                warnings: false
+//        }})
     ],    
     entry: {
         app: path.join(__dirname,'index.js')
@@ -22,6 +21,15 @@ module.exports = {
     output: {
         path: __dirname+'/public/js',
         filename: 'app.js'
+    },
+    module: {
+        loaders: [{
+            test: /\.jsx$/,
+            exclude: /node_modules/,
+            loaders: ['babel?presets[]=react'],
+        },
+        { test: /\.ejs$/, loader: 'ignore-loader' }
+        ]
     },
     target: 'node',
     externals: [nodeExternals()]

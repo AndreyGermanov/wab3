@@ -1,15 +1,15 @@
+var mongoAdapter = require('sails-mongo');
 module.exports = {
     adapters: {
-        mongo: {
-            module:'sails-mongo',
-            host: 'localhost',
-            port: 27017,            
-            database: 'wab3'
-        }
+        'default': mongoAdapter,
+        'mongo': mongoAdapter
     },
     connections: {
         'default': {
-            adapter: 'mongo',
+            adapter: 'default',
+            host: 'localhost',
+            port: 27017,
+            database: 'wab3'
         }
     }
 }
