@@ -1,6 +1,6 @@
 var loginTemplate = React.createClass({
     getInitialState: function() {
-        return {login:'',password:'',error_message:''}
+        return {login:'',password:'',error_message:'',result:''}
     },
     onLoginChange: function(evt) {
         this.setState({login: evt.target.value});
@@ -9,10 +9,11 @@ var loginTemplate = React.createClass({
         this.setState({password: evt.target.value});
     },
     onLoginSubmit: function(evt) {
+        var me = this;
         if (this.state.login && this.state.password) {
             this.setState({error_message:''});
-            this.props.entity.onLoginSubmit(this.state.login,this.state.password, function() {
-                console.log('finished');
+            this.props.entity.onLoginSubmit(this.state.login,this.state.password, function(data) {
+                me.setState({result:data});
             });
         } else {
             this.setState({error_message: 'Enter login and password, please'});
@@ -22,6 +23,7 @@ var loginTemplate = React.createClass({
         return (
             <div align="center">
                 <h3 style={{'color':'red'}}>{this.state.error_message}</h3>
+                {this.state.result}
                 <table>
                     <tbody>
                         <tr valign='top'>

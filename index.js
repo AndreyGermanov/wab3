@@ -9,6 +9,5 @@ require("./lib/classes/core/model.js");
 var server = Class.new('WebServer','WebServer');
 Class.new('Db','Db');
 Class.new('Auth','Auth');
-console.log('create auth');
 server.run();
 
