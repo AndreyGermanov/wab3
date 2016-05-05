@@ -13,7 +13,7 @@ var loginTemplate = React.createClass({
         if (this.state.login && this.state.password) {
             this.setState({error_message:''});
             this.props.entity.onLoginSubmit(this.state.login,this.state.password, function(data) {
-                me.setState({result:data});
+                me.setState({result:JSON.stringify(data)});
             });
         } else {
             this.setState({error_message: 'Enter login and password, please'});
