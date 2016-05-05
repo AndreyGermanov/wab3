@@ -6,8 +6,7 @@ require("./lib/classes/core/db.js");
 require("./lib/classes/web/auth.js");
 require("./lib/classes/core/model.js");
 // @endif
-var server = Class.new('WebServer','WebServer');
 Class.new('Db','Db');
+var server = Class.new('WebServer','WebServer');
 Class.new('Auth','Auth');
-server.run();
 

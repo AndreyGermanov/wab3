@@ -5,7 +5,8 @@ module.exports = {
         migrate: 'alter',
         attributes: {
             login: 'string',
-            password: 'string'
+            password: 'string',
+            remember_token: 'string'
         }
     }
 };
