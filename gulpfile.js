@@ -106,7 +106,7 @@ gulp.task('run:server', function() {
 })
 
 gulp.task('vendor', function() {
-    gulp.src(['bower_components/jquery/dist/jquery.min.js']).pipe(concat('vendor.js')).pipe(gulp.dest('public/js'));
+    gulp.src(['bower_components/jquery/dist/jquery.min.js','node_modules/validator/validator.min.js']).pipe(concat('vendor.js')).pipe(gulp.dest('public/js'));
 })
 
 gulp.task('watch', function() {

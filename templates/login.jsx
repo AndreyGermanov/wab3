@@ -24,7 +24,7 @@ var loginTemplate = React.createClass({
     },
     render: function() {
         return (
-            <div align="center">
+            <div align="center" style={{'width':'100%'}}>
                 <h3 style={{'color':'red'}}>{this.state.error_message}</h3>
                 {this.state.result}
                 <table>
@@ -51,6 +51,8 @@ var loginTemplate = React.createClass({
                         </tr>
                     </tbody>
                 </table>
+                <br/>
+                <a href='/auth/reset' style={{'cursor':'pointer','color':'blue'}}>Reset password</a>
             </div>
         )
     }
