@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     async = require('async'),
     react = require('gulp-react'),
     forever = require('gulp-forever-monitor');
+    mocha = require('gulp-mocha');
 
 gulp.task('classes', function() {
     var classes_array = {};
@@ -105,16 +106,25 @@ gulp.task('run:server', function() {
         })
 })
 
+gulp.task('test', function() {
+    process.env.testing = 'YES';
+    gulp.src('test/*.js', {read: false})
+        .pipe(mocha({reporter: 'nyan', ignoreLeaks: true}))
+        .on('end',function() {
+            process.env.testing = 'NO';
+        });
+});
+
 gulp.task('vendor', function() {
     gulp.src(['bower_components/jquery/dist/jquery.min.js','node_modules/validator/validator.min.js']).pipe(concat('vendor.js')).pipe(gulp.dest('public/js'));
-})
+});
 
 gulp.task('watch', function() {
-    gulp.watch(['lib/*','lib/*/*.js','lib/*/*/*.js'],['classes']);
+    gulp.watch(['lib/*','lib/*/*.js','lib/*/*/*.js'],['classes','test']);
     gulp.watch(['templates/*'],['templates']);
 })
 
-gulp.task('default', ['watch', 'vendor', 'classes', 'templates', 'run:server'], function() {
+gulp.task('default', ['watch', 'vendor', 'classes', 'templates', 'run:server','test'], function() {
     gulp.src(['index.js']).pipe(preprocess({context: {MODE: 'CLIENT'}})).pipe(concat('index.js')).pipe(gulp.dest('public/js'));
 });
 

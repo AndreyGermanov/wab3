@@ -24,19 +24,31 @@ var resetPasswordFormTemplate = React.createClass({
     onPasswordChange: function(evt) {
         var formControls = this.state.formControls;
         formControls.password.value = evt.target.value;
-        this.setState({formControls:formControls,success_message:'',error_message:''});
+        this.setState({
+            formControls:formControls,
+            success_message:'',
+            error_message:''
+        });
     },
 
     onConfirmPasswordChange: function(evt) {
         var formControls = this.state.formControls;
         formControls.confirm_password.value = evt.target.value;
-        this.setState({formControls:formControls,success_message:'',error_message:''});
+        this.setState({
+            formControls:formControls,
+            success_message:'',
+            error_message:''
+        });
     },
 
     onFormInputBlur: function(evt) {
         var formControls = this.state.formControls;
         formControls[evt.target.id] = this.props.entity.validateFormItem(evt.target.id,evt.target.value,'resetPasswordForm');
-        this.setState({formControls: formControls,success_message:'',error_message:''});
+        this.setState({
+            formControls: formControls,
+            success_message:'',
+            error_message:''
+        });
     },
 
     onResetSubmit: function(evt) {
@@ -47,13 +59,20 @@ var resetPasswordFormTemplate = React.createClass({
         if (result.error) {
             this.setState({formControls:result.formControls,error_message:result.error_message});
         } else {
-            this.props.entity.onNewPasswordSubmit(this.state.formControls.password.value, this.state.formControls.confirm_password.value, this.props.link, function(result) {
-                if (result.error == 'error') {
-                    me.setState({formControls:result.formControls,error_message:result.error_message,success_message:''});
-                } else {
-                    location.assign('/auth/login');
-                }
-            });
+            this.props.entity.onNewPasswordSubmit(this.state.formControls.password.value,
+                                                    this.state.formControls.confirm_password.value,
+                                                    this.props.link, function(result) {
+                                                        if (result.error == 'error') {
+                                                            me.setState({
+                                                                formControls:result.formControls,
+                                                                error_message:result.error_message,
+                                                                success_message:''
+                                                            });
+                                                        } else {
+                                                            location.assign('/auth/login');
+                                                        }
+                                                    }
+            );
         }
     },
 

@@ -1,6 +1,12 @@
 var loginTemplate = React.createClass({
     getInitialState: function() {
-        return {login:'',password:'',error_message:'',result:'',remember_token:0}
+        return {
+            login:'',
+            password:'',
+            error_message:'',
+            result:'',
+            remember_token:0
+        }
     },
     onLoginChange: function(evt) {
         this.setState({login: evt.target.value});

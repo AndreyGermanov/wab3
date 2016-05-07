@@ -1,5 +1,6 @@
 build/
 node_modules/
+config/mail.js
 .git/
 bower_components/
 public/js

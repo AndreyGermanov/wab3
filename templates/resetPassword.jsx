@@ -18,22 +18,38 @@ var resetPasswordTemplate = React.createClass({
     onEmailChange: function(evt) {
         var formControls = this.state.formControls;
         formControls.email.value = evt.target.value;
-        this.setState({formControls:formControls,success_message:'',error_message:''});
+        this.setState({
+            formControls:formControls,
+            success_message:'',
+            error_message:''
+        });
     },
 
     onFormInputBlur: function(evt) {
         var formControls = this.state.formControls;
         formControls[evt.target.id] = this.props.entity.validateFormItem(evt.target.id,evt.target.value,'resetPassword');
-        this.setState({formControls: formControls,success_message:'',error_message:''});
+        this.setState({
+            formControls: formControls,
+            success_message:'',
+            error_message:''
+        });
     },
 
     onResetSubmit: function(evt) {
         var me = this;
         var formControls = this.props.entity.resetFormValidation(this.state.formControls);
-        this.setState({formControls:formControls,success_message:'',error_message:''});
+        this.setState({
+            formControls:formControls,
+            success_message:'',
+            error_message:''
+        });
         var result = this.props.entity.validateForm(this.state.formControls,'resetPassword');
         if (result.error) {
-            this.setState({formControls:result.formControls,error_message:result.error_message});
+            this.setState({
+                formControls:result.formControls,
+                error_message:
+                result.error_message
+            });
         } else {
             this.props.entity.onResetPasswordSubmit(this.state.formControls.email.value, function(result) {
                 if (result.status == 'error') {
@@ -44,7 +60,11 @@ var resetPasswordTemplate = React.createClass({
                 } else {
                     if (result.status == 'ok') {
                         var formControls = me.props.entity.resetFormValidation(me.state.formControls);
-                        me.setState({formControls:formControls,success_message:'Reset password link sent to your email address',error_message:''});
+                        me.setState({
+                            formControls:formControls,
+                            success_message:'Reset password link sent to your email address',
+                            error_message:''
+                        });
                     }
                 }
             });
